@@ -1,4 +1,5 @@
 Team name:
+
 Team members: Jen-Jun Yen, Shiva Sharma, Prabhav Khandelwal, Dylan Hua
 
 Project idea 1: My Vaccine

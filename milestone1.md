@@ -32,9 +32,13 @@ A dog parent is specifically looking for a *female Beagle* to mate with for his 
 - On the profile page, the parent can edit details about their child like age, gender and their medical history.
 - On the records page, the parent can see an exhaustive list of completed and upcoming vaccinations.
 - On the settings page, the parent can choose to link their account with Google/Facebook and adjust miscellaneous app settings.
+
 ![MyVaccine Prototype - Home page](images/prototypes/prototype-2/Home.png)
+---
 ![MyVaccine Prototype - Profile page](images/prototypes/prototype-2/Profile.png)
+---
 ![MyVaccine Prototype - Record page](images/prototypes/prototype-2/Record.png)
+---
 ![MyVaccine Prototype - Settings page](images/prototypes/prototype-2/Settings.png)
 
 

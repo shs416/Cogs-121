@@ -15,17 +15,26 @@ None of our teammates are the target audience for the app because none of us are
 *Possible Pivot*: An app for people to find adoptable pets and rescue them. We can use the [Adoptable Pet Data API](https://rescuegroups.org/services/adoptable-pet-data-api/) for that.
 
 ### Storyboards
-Storyboard 1: Vaccine web application. The user does not know whether they are up to date on a certain vaccine, but with the web app, they can make sure they have that information on hand.
+#### Storyboard 1 (for vaccination app): 
+The user does not know whether they are up to date on a certain vaccine, but with the web app, they can make sure they have that information on hand.
+![Vaccination app storyboard](add-image-path-here)
 
-Storyboard 2:
-
-
+#### Storyboard 2 (for dog mating app):
+A dog parent is specifically looking for a *female Beagle* to mate with for his dog Simba, but can't find one of suitable age. He uses the DogMate app to find a *female Beagle* of suitable age and within his locality.
+![DogMate Storyboard](images/storyboards/dogmate-storyboard.png)
 
 ### Prototypes
-Prototype 1:
+#### Prototype 1 (for vaccination app):
 
 
-Prototype 2:
+#### Prototype 2 (for vaccination app):
+- On the home page, the parent can login and see the recently completed and upcoming vaccinations for their child.
+- On the profile page, the parent can edit details about their child like age, gender and their medical history.
+- On the records page, the parent can see an exhaustive list of completed and upcoming vaccinations.
+- On the settings page, the parent can choose to link their account with Google/Facebook and adjust miscellaneous app settings.
+![MyVaccine Prototype - Home page](images/prototypes/prototype-2/Home.png)
+![MyVaccine Prototype - Profile page](images/prototypes/prototype-2/Profile.png)
+![MyVaccine Prototype - Record page](images/prototypes/prototype-2/Record.png)
+![MyVaccine Prototype - Settings page](images/prototypes/prototype-2/Settings.png)
 
 
-Prototype 3:

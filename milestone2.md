@@ -9,5 +9,6 @@ Our app is designed for people who have a hard time tracking what kind of vaccin
 
 ![embed screenshot of homepage here](#)
 *description of functionality of homepage and difference from initial paper prototypes*
+
 ![embed screenshot of news feed page here](#)
 *description of functionality of news feed page and difference from initial paper prototypes*

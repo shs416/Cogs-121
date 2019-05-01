@@ -30,8 +30,8 @@
 
     <!-- Styles -->
 
-    <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" media="all"/>
-
+<!--     <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" media="all"/>
+ -->
     <!-- Social Tags -->
 
     <meta name="description" content="" />
@@ -84,9 +84,9 @@
         database.ref('vaccines/').once('value', (snapshot) => {
             const data = snapshot.val();
             console.log('Vaccine data: ', (data));
-            snapshot.forEach((child) => {
+            /*snapshot.forEach((child) => {
                 console.log(child.key, child.val().info['ending age']);
-            });      
+            });*/      
 
             $('#vaccineDiv').html('All vaccines: ' + Object.keys(data));              
         });
@@ -300,7 +300,6 @@
                 <a href="#!" class="secondary-content">
                     <i class="material-icons">delete</i>
                 </a>
-
             </div>
         </li>
         <li class="collection-item">
@@ -314,7 +313,6 @@
                 <a href="#!" class="secondary-content">
                     <i class="material-icons">delete</i>
                 </a>
-
             </div>
         </li>
 

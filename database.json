@@ -1,0 +1,85 @@
+{
+  "vaccines": 
+  {
+    "Hepatitis B": {
+        "info": {
+          "starting age": "birth", 
+          "ending age": "18 months", 
+          "number of doses": "3"
+        } 
+    },
+
+    "Rotavirus": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "6 months", 
+        "number of doses": "2"
+      } 
+    },
+    
+    "Diptheria": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "6 years", 
+        "number of doses": "4"
+      }
+    },
+
+    
+    "Tetanus": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "6 years", 
+        "number of doses": "4"
+      }
+    },
+    
+    "Haemophilys influenzae type b": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "15 months", 
+        "number of doses": "3"
+      }
+    },
+
+    "Pneumococcal conjugate": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "15 months", 
+        "number of doses": "4"
+      }
+    },
+      
+    "Inactivated poliovirus": {
+      "info": {
+        "starting age": "2 months", 
+        "ending age": "6 years", 
+        "number of doses": "3"
+      }
+    },
+      
+    "Varicella": {
+      "info": {
+        "starting age": "12 months", 
+        "ending age": "6 years", 
+        "number of doses": "2"
+      }
+    },  
+  
+    "Hepatitis A": {
+      "info": {
+        "starting age": "12 months", 
+        "ending age": "6 years", 
+        "number of doses": "2"
+      }
+    },
+
+    "Measles": {
+      "info": {
+        "starting age": "12 months", 
+        "ending age": "6 years", 
+        "number of doses": "2"
+      }
+    }      
+  }
+}

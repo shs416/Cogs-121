@@ -1,14 +1,18 @@
 # Milestone 2
 
-We went with our initial Vaccines app idea with some minor changes. In essence, we plan to include the TA's feedback about having a news feed with alerts about recent outbreaks and general news regarding vaccines.
-
-## Brief Description of the app idea (copied from Milestone 1):
-Our app is designed for people who have a hard time tracking what kind of vaccine they need based on their age, gender, and medical history. Unlike us, many people out there don’t schedule regular check-up with doctors and lack the knowledge of what kind of vaccines they need at the time. This app can help elderly people with weak immune systems make better health decisions. This app can also help parents with newborns to better keep track of their kids’ vaccines records and schedules. We plan to use Google Map API to show users the nearby location that they can get the vaccine they needed. We also plan to use real life data sets with vaccines-related information to guide our users about what the vaccine is for and when it should be received. We also plan to incorporate News API to help the users to stay on current trends. None of our teammates are a target audience for this app because none of us are parents or elderly.
+After reviewing the feedback from the TA, we decided to go with the same vaccine idea and narrow down our target users to parents with newborns. The app can help parents to keep track of their children’s vaccine records and schedules.
 
 ## App screenshots
 
-![embed screenshot of homepage here](#)
-*description of functionality of homepage and difference from initial paper prototypes*
+For the design of our app, we decided to follow the general outline present in our paper prototype 1. The user will be presented with two tables of vaccines, one table for vaccines their child needs to receive and the other for vaccines the child has already received. Unlike our prototypes, we did not include the map feature to find pharmacies close to the user. This is because there are already existing websites/apps (Google Maps) that provide similar functions and we also want to focus on presenting the vaccine record information to our users.
 
-![embed screenshot of news feed page here](#)
-*description of functionality of news feed page and difference from initial paper prototypes*
+The first screen put the users' vaccine records into two tables, pending vaccine and completed vaccine. Users can also perform CRUD actions on contents of the tables. Additionally, the users can check off a vaccine once their child has gotten it and it will move to the Completed table. Users can also search for a specific vaccine from the list and get additional information about it, like starting age, ending age and number of doses.
+![Skeleton - Home page](images/skeleton/home.png)
+
+
+The second screen will include latest news related to vaccine information or health issues in the regions that we will fetch using News API.
+![Skeleton - News page](images/skeleton/news.jpg)
+
+## API/Real Data
+Going forward, we plan to use News API for the contents under the News tab. As for the vaccine information, we plan to collect
+the data from the CDC website and then formate the data.

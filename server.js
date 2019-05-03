@@ -27,6 +27,7 @@ app.get('/allVaccines', (req, res) => {
 });
 
 app.get('/hideAllVaccines', (req, res) => {
+  console.log('hiding vaccine list');
   res.send({});
 }); 
 

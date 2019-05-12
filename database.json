@@ -1,5 +1,5 @@
 {
-  "vaccines": 
+  "completed_vaccines": 
   {
     "Hepatitis B": {
         "info": {
@@ -25,7 +25,6 @@
       }
     },
 
-    
     "Tetanus": {
       "info": {
         "starting age": "2 months", 
@@ -56,8 +55,12 @@
         "ending age": "6 years", 
         "number of doses": "3"
       }
-    },
-      
+    }
+  },
+
+
+  "pending_vaccines":      
+  {
     "Varicella": {
       "info": {
         "starting age": "12 months", 

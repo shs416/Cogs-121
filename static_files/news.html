@@ -55,8 +55,52 @@
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+        <script src="jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript">
+          $(document).ready(() => {
+            var url = 'https://newsapi.org/v2/everything?' +
+                'q=vaccine&' +
+                'from=2019-05-05&' +
+                'sortBy=popularity&' +
+                'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
+      
+            var req = new Request(url);
+      
+            fetch(req)
+              .then(function(response) { return response.json(); })
+              .then(function(data) {
+      
+                //var jsonData = response.json();
+                console.log(data);
+      
+                for (i=0; i < data.articles.length; i++) {
+                  var appendString = '<div class="col s12 m6 l4">\
+                  <div class="card">\
+                    <div class="card-image">\
+                      <img src="' + data.articles[i].urlToImage + '">\
+                      <span class="card-title">' + data.articles[i].title + '</span>\
+                    </div>\
+                    <div class="card-content">\
+                      <p>' + data.articles[i].description + '</p>\
+                    </div>\
+                    <div class="card-action">\
+                      <a href="' + data.articles[i].url + '">Link to News Article</a>\
+                    </div>\
+                  </div>\
+                </div>';
+                  $("#news-body").append(appendString);
+                  //console.log(appendString);
+                }
+            })
+            
+            
+            });
+          </script>
+
 
     </head>
+
     <body>
         <nav>
             <div class="nav-wrapper">
@@ -67,9 +111,8 @@
                   </ul>
             </div>
        </nav>
-
-       <div class="row">
-
+       <div class="row" id="news-body">
+          <!-- Example Card
            <div class="col s12 m6 l4">
              <div class="card">
                <div class="card-image">
@@ -77,75 +120,14 @@
                  <span class="card-title">News Title</span>
                </div>
                <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text.</p>
+                 <p>news intro text news intro text news intro text news intro text news intro text.</p>
                </div>
                <div class="card-action">
                  <a href="#">Link to News Article</a>
                </div>
              </div>
-           </div>
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="images/sample.jpeg">
-                 <span class="card-title">News Title</span>
-               </div>
-               <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text.</p>
-               </div>
-               <div class="card-action">
-                 <a href="#">Link to News Article</a>
-               </div>
-             </div>
-           </div>
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="images/sample.jpeg">
-                 <span class="card-title">News Title</span>
-               </div>
-               <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text.</p>
-               </div>
-               <div class="card-action">
-                 <a href="#">Link to News Article</a>
-               </div>
-             </div>
-           </div>
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="images/sample.jpeg">
-                 <span class="card-title">News Title</span>
-               </div>
-               <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text.</p>
-               </div>
-               <div class="card-action">
-                 <a href="#">Link to News Article</a>
-               </div>
-             </div>
-           </div>
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="images/sample.jpeg">
-                 <span class="card-title">News Title</span>
-               </div>
-               <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text news intro text.</p>
-               </div>
-               <div class="card-action">
-                 <a href="#">Link to News Article</a>
-               </div>
-             </div>
-           </div>
-
-
+           </div> !-->
         </div>
-
-
-
 
         <footer class="">
     <small>
@@ -157,5 +139,10 @@
 
 <!--         <script src="//localhost:35729/livereload.js"></script>
  -->
+
+    
     </body>
+
+    
+
 </html>

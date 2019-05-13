@@ -100,10 +100,12 @@
                 const keyWord = $('#searchBar').val()
                 console.log(keyWord)
                 const search_url = 'https://newsapi.org/v2/everything?' +
-                'q=vaccine '+keyWord+'&' +
+                'q=vaccine ' +keyWord +'&' +
                 'from=2019-05-05&' +
                 'sortBy=popularity&' +
                 'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
+
+                console.log(search_url);
 
                  const search_req = new Request(search_url);
 

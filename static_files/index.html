@@ -91,6 +91,19 @@
         }
     } 
 
+   function moveToPending(buttonId, vacName) {
+        if(document.getElementById(buttonId)) {
+            // move items
+            database.ref("vaccines/" + vacName + "/info/").update({status: "pending"});
+            console.log(vacName + "updated");
+
+            $("#pending_vaccines tbody").empty();
+            $("#completed_vaccines tbody").empty();
+            populatePending();
+            populateCompleted();
+        }
+    }
+
     function populatePending() {
         database.ref('vaccines/').once('value', (snapshot) => {
             const data = snapshot.val();
@@ -109,11 +122,7 @@
                         '<td>' + child.val().info['starting age'] + '</td>'
                         + '<td>' + child.val().info['ending age'] + '</td>'
                         + '<td>' + child.val().info['number of doses'] + '</td>'
-                        + '<td>' +
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
-                            + '</td></tr>'                    
+                        + '</tr>'                    
                     );
                 }
             });     
@@ -127,6 +136,7 @@
             snapshot.forEach((child) => {
 
                 const vaccineName = child.val().info['name'];
+                const backToPendingButton = vaccineName + "_back_to_pending_button";
                 if(child.val().info['status'] == 'completed') {
                     console.log("completed", child.val().info['name']);
 
@@ -136,11 +146,11 @@
                         '<td>' + child.val().info['starting age'] + '</td>'
                         + '<td>' + child.val().info['ending age'] + '</td>'
                         + '<td>' + child.val().info['number of doses'] + '</td>'
-                        + '<td>' +
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
-                            + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
-                            + '</td></tr>'                    
+                        + '<td><button id="' + backToPendingButton
+                        + '"' + 'onClick="moveToPending(\'' + backToPendingButton 
+                        + '\', \''
+                        + vaccineName + 
+                        '\');" >' + 'Move to Pending' + '</button>' + '</td></tr>'                    
                     );
                 }
             }); 
@@ -225,7 +235,6 @@
                 <th>Starting age</th>
                 <th>Ending age</th>
                 <th>Number of doses</th>
-                <th></th>
             </tr>
         </thead>
         <tbody></tbody>

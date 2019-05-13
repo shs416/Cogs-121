@@ -23,7 +23,8 @@
     - Multiple platform support
 - For the list of vaccines on the homepage, we are using a database constructed in Firebase and then using AJAX calls to utilize the data in the front-end.
 
-**Possible Future Data Use**: We plan to incorporate functionality in the homepage so that the user can:
+### Possible Future Data Use 
+We plan to incorporate functionality in the homepage so that the user can:
 - add their own custom Vaccines
 - edit existing vaccine data if necessary
 - delete a vaccine if it doesn't apply to the patient

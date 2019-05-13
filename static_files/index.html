@@ -74,86 +74,90 @@
 
     <script src="jquery-3.3.1.min.js"></script>
 
+
     <script type="text/javascript">
-    
+    const database = firebase.database();
+
+   function moveToCompleted(vacName) {
+        if(document.getElementById(vacName).checked) {
+            // move items
+            database.ref("vaccines/" + vacName + "/info/").update({status: "completed"});
+            console.log(vacName + "updated");
+
+            $("#pending_vaccines tbody").empty();
+            $("#completed_vaccines tbody").empty();
+            populatePending();
+            populateCompleted();
+        }
+    } 
+
+    function populatePending() {
+        database.ref('vaccines/').once('value', (snapshot) => {
+            const data = snapshot.val();
+
+            snapshot.forEach((child) => {
+                const vaccineName = child.val().info['name'];
+
+                if(child.val().info['status'] == 'pending') {
+                    console.log("pending", child.val().info['name']);
+                    $('#pending_vaccines > tbody:last-child').append(
+                        '<tr><td><label><input type="checkbox" id="' + 
+                        vaccineName + '"' + 'onChange="moveToCompleted(\'' + vaccineName 
+                        + '\');" />' + '<span>'  
+                        + '</span></label></td>' +
+                        '<td>' + vaccineName + '</td>' +
+                        '<td>' + child.val().info['starting age'] + '</td>'
+                        + '<td>' + child.val().info['ending age'] + '</td>'
+                        + '<td>' + child.val().info['number of doses'] + '</td>'
+                        + '<td>' +
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
+                            + '</td></tr>'                    
+                    );
+                }
+            });     
+        });
+    }
+
+
+    function populateCompleted() {
+        database.ref('vaccines/').once('value', (snapshot) => {
+            const data = snapshot.val();
+            snapshot.forEach((child) => {
+
+                const vaccineName = child.val().info['name'];
+                if(child.val().info['status'] == 'completed') {
+                    console.log("completed", child.val().info['name']);
+
+                    $('#completed_vaccines > tbody:last-child').append(
+                        '<tr>' +
+                        '<td>' + vaccineName + '</td>' +
+                        '<td>' + child.val().info['starting age'] + '</td>'
+                        + '<td>' + child.val().info['ending age'] + '</td>'
+                        + '<td>' + child.val().info['number of doses'] + '</td>'
+                        + '<td>' +
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
+                            + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
+                            + '</td></tr>'                    
+                    );
+                }
+            }); 
+        });
+    }
+
     $(document).ready(() => {
 
         const database = firebase.database();
+        populatePending();
+        populateCompleted();
 
 
-        database.ref('pending_vaccines/').once('value', (snapshot) => {
-            const data = snapshot.val();
-            var vaccineNames = Object.keys(data);
-            var counter = 0;
-            snapshot.forEach((child) => {
-
-                console.log(child.val(), vaccineNames[counter]);
-                const vaccineName = vaccineNames[counter];
-                $('#pending_vaccines > tbody:last-child').append(
-                    '<tr><td><label><input type="checkbox" id=vaccineName onclick="moveToCompleted(vaccineName);" /><span>'  
-                    + '</span></label></td>' +
-                    '<td>' + vaccineName + '</td>' +
-                    '<td>' + child.val().info['starting age'] + '</td>'
-                    + '<td>' + child.val().info['ending age'] + '</td>'
-                    + '<td>' + child.val().info['number of doses'] + '</td>'
-                    + '<td>' +
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
-                        + '</td></tr>'                    
-                );
-                counter += 1;
-            });           
-
-
-            /*snapshot.forEach((childSnapshot, i) => {
-                $('#completed_vaccines').append('<li class="collection-repeat">' + childSnapshot.val() + '</li>')   
-                console.log(childSnapshot.val(), i);         
-            })*/
-        });
-
-        function moveToCompleted(vacName) {
-            if(document.getElementbyId(vacName).checked) {
-                // move items
-            }
-        }
-
-        database.ref('completed_vaccines/').once('value', (snapshot) => {
-            const data = snapshot.val();
-            var vaccineNames = Object.keys(data);
-            var counter = 0;
-            snapshot.forEach((child) => {
-
-                console.log(child.val(), vaccineNames[counter]);
-                const vaccineName = vaccineNames[counter];
-                $('#completed_vaccines > tbody:last-child').append(
-                    '<tr>' +
-                    '<td>' + vaccineName + '</td>' +
-                    '<td>' + child.val().info['starting age'] + '</td>'
-                    + '<td>' + child.val().info['ending age'] + '</td>'
-                    + '<td>' + child.val().info['number of doses'] + '</td>'
-                    + '<td>' +
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">add</i></a>'
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>'
-                        + '<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
-                        + '</td></tr>'                    
-                );
-                counter += 1;
-            }); 
-        });
-
-
-        $("#home").change(function() {
-        // this function will get executed every time the #home element is clicked (or tab-spacebar changed)
-            if($(this).is(":checked")) // "this" refers to the element that fired the event
-            {
-                alert('home is checked');
-            }
-        });
 
         $('#viewAllVaccineButton').click(() => {
 
-            database.ref('completed_vaccines/').once('value', (snapshot) => {
+            database.ref('vaccines/').once('value', (snapshot) => {
                 const data = snapshot.val();
                 console.log('Vaccine data: ', (data));
                 /*snapshot.forEach((child) => {
@@ -170,37 +174,25 @@
         });          
 
         $('#infoButton').click(() => {
-        const key = 'vaccines/' + $('#nameBox').val();
-        console.log('Vaccine data for ', key);
+            const key = 'vaccines/' + $('#nameBox').val();
+            console.log('Vaccine data for ', key);
 
-        database.ref(key).once('value', (snapshot) => {
-            const data = snapshot.val();
+            database.ref(key).once('value', (snapshot) => {
+                const data = snapshot.val();
 
-            if(data) {
-                snapshot.forEach((child) => {
-                    console.log(child.val());
-                    $('#vaccineInfoDiv').html('Info for ' + $('#nameBox').val() + '<br />' 
-                        + 'Starting age: ' + child.val()['starting age'] + '<br />'
-                        + 'Ending age: ' + child.val()['ending age'] + '<br />'
-                        + 'Number of doses: ' + child.val()['number of doses']
+                if(data) {
+                    snapshot.forEach((child) => {
+                        console.log(child.val());
+                        $('#vaccineInfoDiv').html('Info for ' + $('#nameBox').val() + '<br />' 
+                            + 'Starting age: ' + child.val()['starting age'] + '<br />'
+                            + 'Ending age: ' + child.val()['ending age'] + '<br />'
+                            + 'Number of doses: ' + child.val()['number of doses']
 
-
-
-
-                    );
-                });      
-                //console.log('Vaccine data: ', (data));
-            }              
-        });
-        /*$.ajax({
-          url: '/allVaccines',
-          type: 'GET',
-          dataType : 'json',
-          success: (data) => {
-            console.log('You received some data!', data);
-            $('#vaccineDiv').html('All vaccines: ' + data);
-          },
-        });*/
+                        );
+                    });      
+                    //console.log('Vaccine data: ', (data));
+                }              
+            });
         });
 
         // define a generic Ajax error handler:
@@ -226,7 +218,7 @@
 
     <h4>Pending Vaccines</h4>
     <table style="width:100%" id="pending_vaccines">
-        <tbody>
+        <thead>
             <tr>
                 <th>Completed?</th>
                 <th>Name</th>
@@ -235,12 +227,13 @@
                 <th>Number of doses</th>
                 <th></th>
             </tr>
-        </tbody>
+        </thead>
+        <tbody></tbody>
     </table>
 
     <h4>Completed Vaccines</h4>
     <table style="width:100%" id="completed_vaccines">
-        <tbody>
+        <thead>
             <tr>
                 <th>Name</th>
                 <th>Starting age</th>
@@ -248,7 +241,8 @@
                 <th>Number of doses</th>
                 <th></th>
             </tr>
-        </tbody>
+        </thead>
+        <tbody></tbody>
     </table>
 
     <button id="viewAllVaccineButton">View All Vaccines</button>

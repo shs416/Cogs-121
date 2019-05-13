@@ -1,87 +1,109 @@
 {
-  "completed_vaccines": 
+  "vaccines": 
   {
     "Hepatitis B": {
         "info": {
+          "name": "Hepatitis B",
           "starting age": "birth", 
           "ending age": "18 months", 
-          "number of doses": "3"
+          "number of doses": "3",
+          "status": "completed"
         } 
     },
 
     "Rotavirus": {
       "info": {
+        "name": "Rotavirus",        
         "starting age": "2 months", 
         "ending age": "6 months", 
-        "number of doses": "2"
+        "number of doses": "2",
+        "status": "completed"
+
       } 
     },
     
     "Diptheria": {
       "info": {
+        "name": "Diptheria",        
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "4"
+        "number of doses": "4",
+        "status": "completed"
       }
     },
 
     "Tetanus": {
       "info": {
+        "name": "Tetanus",                
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "4"
+        "number of doses": "4",
+        "status": "completed"
+
       }
     },
     
     "Haemophilys influenzae type b": {
       "info": {
+        "name": "Haemophilys influenzae type b",                
         "starting age": "2 months", 
         "ending age": "15 months", 
-        "number of doses": "3"
+        "number of doses": "3",
+        "status": "completed"
+
       }
     },
 
     "Pneumococcal conjugate": {
       "info": {
+        "name": "Pneumococcal conjugate",
         "starting age": "2 months", 
         "ending age": "15 months", 
-        "number of doses": "4"
+        "number of doses": "4",
+        "status": "completed"
+
       }
     },
       
     "Inactivated poliovirus": {
       "info": {
+        "name": "Inactivated poliovirus",
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "3"
+        "number of doses": "3",
+        "status": "completed"
+
       }
-    }
-  },
-
-
-  "pending_vaccines":      
-  {
+    },
     "Varicella": {
       "info": {
+        "name": "Varicella",
         "starting age": "12 months", 
         "ending age": "6 years", 
-        "number of doses": "2"
+        "number of doses": "2",
+        "status": "pending"
+
       }
     },  
   
     "Hepatitis A": {
       "info": {
+        "name": "Hepatitis A",
         "starting age": "12 months", 
         "ending age": "6 years", 
-        "number of doses": "2"
+        "number of doses": "2",
+        "status": "pending"
       }
     },
 
     "Measles": {
       "info": {
+        "name": "Measles",
         "starting age": "12 months", 
         "ending age": "6 years", 
-        "number of doses": "2"
+        "number of doses": "2",
+        "status": "pending"
+
       }
     }      
   }

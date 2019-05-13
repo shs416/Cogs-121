@@ -92,7 +92,50 @@
                   $("#news-body").append(appendString);
                   //console.log(appendString);
                 }
-            })
+            });
+
+              $('#searchNews').click(() => {
+                $("#news-body").empty();
+                console.log('search')
+                const keyWord = $('#searchBar').val()
+                console.log(keyWord)
+                const search_url = 'https://newsapi.org/v2/everything?' +
+                'q='+keyWord+'&' +
+                'from=2019-05-05&' +
+                'sortBy=popularity&' +
+                'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
+
+                 const search_req = new Request(search_url);
+      
+            fetch(search_req)
+              .then(function(response) { return response.json(); })
+              .then(function(data) {
+      
+                //var jsonData = response.json();
+                console.log(data);
+      
+                for (i=0; i < data.articles.length; i++) {
+                  const searchNewsArticles = '<div class="col s12 m6 l4">\
+                   <div class="card">\
+                    <div class="card-image">\
+                      <img src="' + data.articles[i].urlToImage + '">\
+                      <span class="card-title">' + data.articles[i].title + '</span>\
+                    </div>\
+                    <div class="card-content">\
+                      <p>' + data.articles[i].description + '</p>\
+                    </div>\
+                    <div class="card-action">\
+                      <a href="' + data.articles[i].url + '">Link to News Article</a>\
+                    </div>\
+                  </div>\
+                </div>';
+                  $("#news-body").append(searchNewsArticles);
+                  //console.log(appendString);
+                  console.log(i)
+                }
+
+              })
+             });
             
             
             });
@@ -111,7 +154,11 @@
                   </ul>
             </div>
        </nav>
+       <input id = "searchBar" type="text" placeholder="Search..">
+       <button id="searchNews">Search</button>
        <div class="row" id="news-body">
+       
+         
           <!-- Example Card
            <div class="col s12 m6 l4">
              <div class="card">

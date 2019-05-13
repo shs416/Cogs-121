@@ -49,7 +49,7 @@
     <meta name="twitter:image" content="">
 
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" type="text/html" href="vendor/style.css">
+    <link rel="stylesheet" type="text/html" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -89,7 +89,7 @@
             populatePending();
             populateCompleted();
         }
-    } 
+    }
 
    function moveToPending(buttonId, vacName) {
         if(document.getElementById(buttonId)) {
@@ -114,18 +114,19 @@
                 if(child.val().info['status'] == 'pending') {
                     console.log("pending", child.val().info['name']);
                     $('#pending_vaccines > tbody:last-child').append(
-                        '<tr><td><label><input type="checkbox" id="' + 
-                        vaccineName + '"' + 'onChange="moveToCompleted(\'' + vaccineName 
-                        + '\');" />' + '<span>'  
+                        '<tr><td><label><input type="checkbox" id="' +
+                        vaccineName + '"' + 'onChange="moveToCompleted(\'' + vaccineName
+                        + '\');" />' + '<span>'
                         + '</span></label></td>' +
                         '<td>' + vaccineName + '</td>' +
                         '<td>' + child.val().info['starting age'] + '</td>'
                         + '<td>' + child.val().info['ending age'] + '</td>'
                         + '<td>' + child.val().info['number of doses'] + '</td>'
                         + '</tr>'                    
+
                     );
                 }
-            });     
+            });
         });
     }
 
@@ -146,14 +147,14 @@
                         '<td>' + child.val().info['starting age'] + '</td>'
                         + '<td>' + child.val().info['ending age'] + '</td>'
                         + '<td>' + child.val().info['number of doses'] + '</td>'
-                        + '<td><button id="' + backToPendingButton
+                        + '<td><button class=btn id="' + backToPendingButton
                         + '"' + 'onClick="moveToPending(\'' + backToPendingButton 
                         + '\', \''
                         + vaccineName + 
-                        '\');" >' + 'Move to Pending' + '</button>' + '</td></tr>'                    
+                        '\');" >' + 'Move to Pending' + '</button>' + '</td></tr>'  
                     );
                 }
-            }); 
+            });
         });
     }
 
@@ -170,18 +171,16 @@
             database.ref('vaccines/').once('value', (snapshot) => {
                 const data = snapshot.val();
                 console.log('Vaccine data: ', (data));
-                /*snapshot.forEach((child) => {
-                    console.log(child.key, child.val().info['ending age']);
-                });*/      
 
-                $('#vaccineDiv').html('All vaccines: ' + Object.keys(data));              
+
+                $('#vaccineDiv').html('All vaccines: ' + Object.keys(data));
             });
         });
 
         $('#hideAllVaccineButton').click(() => {
             $('#vaccineDiv').html('');
 
-        });          
+        });
 
         $('#infoButton').click(() => {
             const key = 'vaccines/' + $('#nameBox').val();
@@ -193,15 +192,15 @@
                 if(data) {
                     snapshot.forEach((child) => {
                         console.log(child.val());
-                        $('#vaccineInfoDiv').html('Info for ' + $('#nameBox').val() + '<br />' 
+                        $('#vaccineInfoDiv').html('Info for ' + $('#nameBox').val() + '<br />'
                             + 'Starting age: ' + child.val()['starting age'] + '<br />'
                             + 'Ending age: ' + child.val()['ending age'] + '<br />'
                             + 'Number of doses: ' + child.val()['number of doses']
 
                         );
-                    });      
+                    });
                     //console.log('Vaccine data: ', (data));
-                }              
+                }
             });
         });
 
@@ -217,8 +216,8 @@
 
 <body>
     <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Vacc Tracc</a>
+        <div class="nav-wrapper" id="indexNav" style="background-color:#26a69a;">
+          <a href="index.html" class="brand-logo" style="padding-left:10px">Vacc Tracc</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="index.html">My Vaccines</a></li>
                     <li><a href="news.html">News Feed</a></li>
@@ -226,42 +225,83 @@
         </div>
    </nav>
 
-    <h4>Pending Vaccines</h4>
-    <table style="width:100%" id="pending_vaccines">
-        <thead>
-            <tr>
-                <th>Completed?</th>
-                <th>Name</th>
-                <th>Starting age</th>
-                <th>Ending age</th>
-                <th>Number of doses</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="row">
+        <div class="col s12 m6 l6">
 
-    <h4>Completed Vaccines</h4>
-    <table style="width:100%" id="completed_vaccines">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Starting age</th>
-                <th>Ending age</th>
-                <th>Number of doses</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <h4>Pending Vaccines</h4>
+            <table style="width:100%" id="pending_vaccines">
+                <thead>
+                    <tr>
+                        <th>Completed?</th>
+                        <th>Name</th>
+                        <th>Starting age</th>
+                        <th>Ending age</th>
+                        <th>Number of doses</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-    <button id="viewAllVaccineButton">View All Vaccines</button>
-    <button id="hideAllVaccineButton">Hide All Vaccines</button>
-    <div id="vaccineDiv"></div>
+        </div>
+
+        <div class="col s12 m6 l6">
+            <h4>Completed Vaccines</h4>
+            <table style="width:100%" id="completed_vaccines">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Starting age</th>
+                        <th>Ending age</th>
+                        <th>Number of doses</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+<br><br>
+    <div class="row">
+        <div class="col s8 push-s2">
+        <center>
+            <button class="btn" id="viewAllVaccineButton">
+                <i class="material-icons left">visibility</i>
+                View All Vaccines
+            </button>
+            <button class="btn" id="hideAllVaccineButton">
+                <i class="material-icons left">visibility_off</i>
+                Hide All Vaccines
+            </button>
+            <br><br>
+            <div id="vaccineDiv"></div>
+        </center>
+    </div>
 
 
-    Look Up a Vaccine: <input id="nameBox" type="text" size="20"/>
-    <button id="infoButton">Get info</button>
-    <div id="vaccineInfoDiv"></div>    
+
+    </div>
+
+    <div class="row">
+        <div class="input-field col s8 push-s2">
+            <i class="material-icons prefix left">search</i>
+            <label for="nameBox">Look Up a Vaccine: </label>
+            <input id="nameBox" type="text" size="20"/>
+
+            <center>
+                <button class="btn" id="infoButton">Get info</button>
+                <br><br>
+                <div id="vaccineInfoDiv"></div>
+            </center>
+
+            <!-- <i class="material-icons prefix left">search</i>
+            <input id = "searchBar" type="text" placeholder="Search..">
+            <center>
+                <button id="searchNews" class="btn waves-light">Search</button>
+            </center> -->
+        </div>
+    </div>
 
 
     <footer class="">

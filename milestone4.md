@@ -18,7 +18,7 @@ of the News Feed Page and enter a keyword (ex: Measles) to look up vaccine-relat
 news articles.
 
 
-### User Action 3: 
+### User Action 3: Look up information for vaccines
 User can look up more information of the specific vaccine on the My Vaccines Pages 
 
 To look up infomation of about the vaccine, users can find the search bar located on the bottom of 

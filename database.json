@@ -4,6 +4,8 @@
     "Hepatitis B": {
         "info": {
           "name": "Hepatitis B",
+          "description": "Hepatitis B is a liver infection caused by the Hepatitis B virus (HBV).",
+          "transmitted": "Hepatitis B is transmitted when blood, semen, or another body fluid from a person infected with the Hepatitis B virus enters the body of someone who is not infected.",
           "starting age": "birth", 
           "ending age": "18 months", 
           "number of doses": "3",
@@ -13,7 +15,9 @@
 
     "Rotavirus": {
       "info": {
-        "name": "Rotavirus",        
+        "name": "Rotavirus", 
+        "description": "Rotavirus is a contagious virus that can cause gastroenteritis (inflammation of the stomach and intestines).",  
+        "transmitted": "If you get rotavirus particles in your mouth, you can get sick. These particles come from infected feces, which can be present in food or on surfaces.",     
         "starting age": "2 months", 
         "ending age": "6 months", 
         "number of doses": "2",
@@ -24,7 +28,9 @@
     
     "Diptheria": {
       "info": {
-        "name": "Diptheria",        
+        "name": "Diptheria",  
+        "description": "Diphtheria is an infection caused by the bacterium Corynebacterium diphtheriae. Diphtheria causes a thick covering in the back of the throat.",      
+        "transmitted": "Diphtheria is transmitted through respiratory droplets, like from coughing or sneezing.",
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "4",
@@ -34,7 +40,9 @@
 
     "Tetanus": {
       "info": {
-        "name": "Tetanus",                
+        "name": "Tetanus",  
+        "description": "Tetanus is an infection caused by bacteria called Clostridium tetani. When the bacteria invade the body, they produce a poison (toxin) that causes painful muscle contractions. Another name for tetanus is “lockjaw”. It often causes a person’s neck and jaw muscles to lock, making it hard to open the mouth or swallow.",              
+        "transmitted": "Tetanus is not transmitted from person to person.",
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "4",
@@ -45,7 +53,9 @@
     
     "Haemophilys influenzae type b": {
       "info": {
-        "name": "Haemophilys influenzae type b",                
+        "name": "Haemophilys influenzae type b",  
+        "description": "Hib can cause severe infections of both the tissue covering the brain and spinal cord (meningitis) and the bloodstream.",              
+        "transmitted": "Hib is spread to others through respiratory droplets, e.g. when someone who has the bacteria in their nose or throat coughs or sneezes.",
         "starting age": "2 months", 
         "ending age": "15 months", 
         "number of doses": "3",
@@ -57,6 +67,8 @@
     "Pneumococcal conjugate": {
       "info": {
         "name": "Pneumococcal conjugate",
+        "description": "Pneumococcal disease is caused by bacteria that can cause ear infections and it can also lead to more serious infections of the lungs and blood.",
+        "transmitted": "Pneumococcal disease can spread from person to person through close contact.",
         "starting age": "2 months", 
         "ending age": "15 months", 
         "number of doses": "4",
@@ -68,6 +80,8 @@
     "Inactivated poliovirus": {
       "info": {
         "name": "Inactivated poliovirus",
+        "description": "Polio is a disease caused by a virus. Most people infected with polio have no symptoms, and many recover without complications. But sometimes people who get polio develop paralysis. Polio can result in permanent disability. Polio can also cause death, usually by paralyzing the muscles used for breathing.",
+        "transmitted": "It is spread mainly by person-to-person contact. It can also be spread by consuming food or drinks that are contaminated with the feces of an infected person.",
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "3",
@@ -78,6 +92,8 @@
     "Varicella": {
       "info": {
         "name": "Varicella",
+        "description": "Chickenpox is a very contagious disease caused by the varicella-zoster virus (VZV). It causes a blister-like rash, itching, tiredness, and fever.",
+        "transmitted": "The virus spreads mainly through close contact with someone who has chickenpox.",
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",
@@ -89,6 +105,8 @@
     "Hepatitis A": {
       "info": {
         "name": "Hepatitis A",
+        "description": "Hepatitis A is a vaccine-preventable, communicable disease of the liver caused by the hepatitis A virus (HAV).",
+        "transmitted": "Hepatitis A is usually transmitted person-to-person through the fecal-oral route or consumption of contaminated food or water.",
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",
@@ -99,6 +117,8 @@
     "Measles": {
       "info": {
         "name": "Measles",
+        "description": "Measles starts with fever, runny nose, cough, red eyes, and sore throat. It’s followed by a rash that spreads over the body. Measles is highly contagious.",
+        "transmitted": "Measles spreads through coughing and sneezing.",
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",

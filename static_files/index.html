@@ -158,6 +158,10 @@
         });
     }
 
+    /*function capFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }*/
+
     $(document).ready(() => {
 
         const database = firebase.database();
@@ -183,7 +187,8 @@
         });
 
         $('#infoButton').click(() => {
-            const key = 'vaccines/' + $('#nameBox').val();
+            const key = 'vaccines/' + $('#nameBox').val()//.toLowerCase();
+            const vaccineName = $('#nameBox').val();
             console.log('Vaccine data for ', key);
 
             database.ref(key).once('value', (snapshot) => {
@@ -192,7 +197,9 @@
                 if(data) {
                     snapshot.forEach((child) => {
                         console.log(child.val());
-                        $('#vaccineInfoDiv').html('Info for ' + $('#nameBox').val() + '<br />'
+                        $('#vaccineInfoDiv').html('Info for ' + child.val()['name'] + '<br />'
+                            + 'Description: ' + child.val()['description'] + '<br />'
+                            + 'How it spreads: ' + child.val()['transmitted'] + '<br />'
                             + 'Starting age: ' + child.val()['starting age'] + '<br />'
                             + 'Ending age: ' + child.val()['ending age'] + '<br />'
                             + 'Number of doses: ' + child.val()['number of doses']
@@ -200,6 +207,9 @@
                         );
                     });
                     //console.log('Vaccine data: ', (data));
+                }
+                else {
+                    $('#vaccineInfoDiv').html('Vaccine not found!');
                 }
             });
         });
@@ -265,7 +275,9 @@
 <br><br>
     <div class="row">
         <div class="col s8 push-s2">
+            <br></br>
         <center>
+            <h4>Learn More About Vaccines</h4><br></br>
             <button class="btn" id="viewAllVaccineButton">
                 <i class="material-icons left">visibility</i>
                 View All Vaccines
@@ -291,9 +303,10 @@
 
             <center>
                 <button class="btn" id="infoButton">Get info</button>
+            </center>
                 <br><br>
                 <div id="vaccineInfoDiv"></div>
-            </center>
+
 
             <!-- <i class="material-icons prefix left">search</i>
             <input id = "searchBar" type="text" placeholder="Search..">

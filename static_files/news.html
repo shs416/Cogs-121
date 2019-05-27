@@ -61,7 +61,7 @@
           $(document).ready(() => {
             var url = 'https://newsapi.org/v2/everything?' +
                 'q=vaccine&' +
-                'from=2019-05-05&' +
+                //'from=2019-05-05&' +
                 'sortBy=popularity&' +
                 'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
 
@@ -76,17 +76,14 @@
 
                 for (i=0; i < data.articles.length; i++) {
                   if(data.articles[i].urlToImage) {
-                    var appendString = '<div class="col s12 m6 l4" style="max-weight:500px; max-height:500px">\
-                    <div class="card">\
+                    var appendString = '<div class="col s12 m6 l4">\
+                    <div class="card" style="height:600px;">\
                       <div class="card-image">\
                         <img src="' + data.articles[i].urlToImage + '">\
                       </div>\
                       <div class="card-content">\
-                      <span class="card-title" style="font-weight:bold">' + data.articles[i].title + '</span>\
+                      <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
                         <p>' + data.articles[i].description + '</p>\
-                      </div>\
-                      <div class="card-action">\
-                        <a style="color:#26a69a;" href="' + data.articles[i].url + '">Link to News Article</a>\
                       </div>\
                       </div>\
                     </div>';

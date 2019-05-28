@@ -77,6 +77,10 @@
             background: #bada55;
         }
 
+        .age-chart .span--a {
+            background: #6ed7ff;
+        }
+
         .age-chart .span--influenza {
             grid-column-start: 2;
             grid-column-end: 7;
@@ -87,7 +91,12 @@
             grid-column-end: 5;
         }
 
-        .vaccine--influenza:after {
+        .vaccine--or {
+            position: relative;
+            border-bottom: 2px dotted black;
+        }
+
+        .vaccine--or:after {
             content: 'OR';
             background: teal;
             color: white;
@@ -119,6 +128,21 @@
             grid-column-end: 5;
         }
 
+        .span-2-3 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .span-2-4 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        .span-3-4 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+
         .span-2-6 {
             grid-column-start: 2;
             grid-column-end: 6;
@@ -129,6 +153,11 @@
             grid-column-end: 7;
         }
 
+        .span-6-7 {
+            grid-column-start: 6;
+            grid-column-end: 7;
+        }
+
         .row-4 { grid-row-start: 4; }
         .row-5 { grid-row-start: 5; }
         .row-6 { grid-row-start: 6; }
@@ -136,6 +165,9 @@
         .row-8 { grid-row-start: 8; }
         .row-9 { grid-row-start: 9; }
         .row-10 { grid-row-start: 10; }
+        .row-11 { grid-row-start: 11; }
+        .row-12 { grid-row-start: 12; }
+        .row-13 { grid-row-start: 13; }
 
     </style>
 
@@ -403,7 +435,7 @@
             >= 65 years
         </div>
 
-        <div class="vaccine vaccine--influenza">
+        <div class="vaccine vaccine--influenza vaccine--or">
             Influenza
         </div>
 
@@ -432,8 +464,41 @@
         <div class="vaccine row-6">Varicella</div>
         <div class="span span-2-5">2 doses</div>
 
-        <div class="vaccine row-7">Zoster Recombinant</div>
+        <div class="vaccine vaccine--or row-7">Zoster Recombinant</div>
         <div class="span row-7 span-5-7">2 doses</div>
+
+        <div class="vaccine row-8">Zoster Live</div>
+        <div class="span row-8 span-6-7">1 doses</div>
+
+        <div class="vaccine row-9">HPV Female</div>
+        <div class="span row-9 span-2-4">2 or 3 doses depending on age at initial vaccination</div>
+
+        <div class="vaccine row-10">HPV Male</div>
+        <div class="span row-10 span-2-3">2 or 3 doses depending	on age at initial vaccination</div>
+        <div class="span span--a row-10 span-3-4">2 or 3 doses depending on age at initial vaccination</div>
+
+        <div class="vaccine row-11">PCV13</div>
+        <div class="span row-11 span-2-6">1 dose</div>
+        <div class="span span--a row-11 span-6-7">1 dose</div>
+
+        <div class="vaccine row-12">PPSV23</div>
+        <div class="span row-12 span-2-6">1 or 2 doses depending on indication</div>
+        <div class="span span--a row-12 span-6-7">1 dose</div>
+
+        <div class="vaccine row-13">Hepatitis A</div>
+        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine</div>
+
+        <div class="vaccine row-14">Hepatitis B</div>
+        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine</div>
+
+        <div class="vaccine row-15">Meningococcal A, C, W, Y</div>
+        <div class="span span--a span-2-7">1 or 2 doses depending on indication, then booster every 5 yrs if risk remains</div>
+
+        <div class="vaccine row-16">Meningococcal B</div>
+        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine and indication</div>
+
+        <div class="vaccine row-17">Haemophilus influenzae type b</div>
+        <div class="span span--a span-2-7">1 or 3 doses depending on indication</div>
 
     </section>
 

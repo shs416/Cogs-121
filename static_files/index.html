@@ -35,9 +35,9 @@
         .age-chart {
             /* height: 50px; */
             width: 90vw;
-            background: #eee;
+            background: #efefef;
             border: 1px solid #aaa;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
 
             display: grid;
             grid-template-columns: 2fr repeat(5, 1fr);
@@ -116,8 +116,6 @@
             border-bottom: 2px dotted black;
         }
 
-
-
         .span-2-7 {
             grid-column-start: 2;
             grid-column-end: 7;
@@ -168,6 +166,47 @@
         .row-11 { grid-row-start: 11; }
         .row-12 { grid-row-start: 12; }
         .row-13 { grid-row-start: 13; }
+
+        .legend {
+            width: 70vw;
+            margin: 2rem auto 2rem;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+            /* grid-gap: 1rem; */
+        }
+
+        .legend > * {
+            padding: 1.25rem;
+        }
+
+        /* .legend .color {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+        }
+
+        .legend .ref {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+        } */
+
+        .legend .ref--green {
+            background: #e9ffa3;
+            margin-right: 2rem;
+        }
+
+        .legend .ref--blue {
+            background: #c5efff;
+        }
+
+        .color--green {
+            background: #bada55;
+        }
+
+        .color--blue {
+            background: #6ed7ff;
+        }
 
     </style>
 
@@ -501,6 +540,18 @@
         <div class="span span--a span-2-7">1 or 3 doses depending on indication</div>
 
     </section>
+
+    <center><h5>Legend</h3></center>
+
+    <article class="legend">
+        <div class="color color--green"></div>
+        <div class="ref ref--green">Recommended vaccination for adults who meet age requirement, lack documentation of vaccination, or lack evidence of past infection</div>
+
+        <div class="color color--blue"></div>
+        <div class="ref ref--blue">Recommended vaccination for adults with an additional risk factor or another indication
+
+</div>
+    </article>
 
     <div class="row">
         <div class="col s8 push-s2">

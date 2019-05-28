@@ -30,6 +30,115 @@
 
     <!-- Styles -->
 
+    <style type="text/css" media="screen">
+
+        .age-chart {
+            /* height: 50px; */
+            width: 90vw;
+            background: #eee;
+            border: 1px solid #aaa;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 2fr repeat(5, 1fr);
+            grid-template-rows: repeat(17, 1fr);
+            /* grid-gap: 0.5rem; */
+
+            align-items: center;
+            /* justify-content: center; */
+
+        }
+
+
+        .age-chart > * {
+            /* padding: 10px; */
+            border: 1px solid #bbb;
+            padding: 10px;
+            text-align: center;
+            /* align-content: center; */
+        }
+
+        .age-chart .heading {
+            background: teal;
+            color: white;
+            font-weight: bold;
+            font-size: 1.15rem;
+            border-color: #ddd;
+        }
+
+        .age-chart .vaccine {
+            background: white;
+            color: teal;
+            font-weight: bold;
+
+        }
+
+        .age-chart .span {
+            background: #bada55;
+        }
+
+        .age-chart .span--influenza {
+            grid-column-start: 2;
+            grid-column-end: 7;
+        }
+
+        .age-chart .span--influenza-a {
+            grid-column-start: 2;
+            grid-column-end: 5;
+        }
+
+        .vaccine--influenza:after {
+            content: 'OR';
+            background: teal;
+            color: white;
+            /* width: 25px;
+            height: 25px; */
+            padding: 2px;
+            border-radius: 50%;
+            border: 1px solid #bada55;
+            position: absolute;
+            top: 30px;
+            /* left: -0; */
+            right: 11vw;
+        }
+
+        .vaccine--influenza, .span--influenza {
+            position: relative;
+            border-bottom: 2px dotted black;
+        }
+
+
+
+        .span-2-7 {
+            grid-column-start: 2;
+            grid-column-end: 7;
+        }
+
+        .span-2-5 {
+            grid-column-start: 2;
+            grid-column-end: 5;
+        }
+
+        .span-2-6 {
+            grid-column-start: 2;
+            grid-column-end: 6;
+        }
+
+        .span-5-7 {
+            grid-column-start: 5;
+            grid-column-end: 7;
+        }
+
+        .row-4 { grid-row-start: 4; }
+        .row-5 { grid-row-start: 5; }
+        .row-6 { grid-row-start: 6; }
+        .row-7 { grid-row-start: 7; }
+        .row-8 { grid-row-start: 8; }
+        .row-9 { grid-row-start: 9; }
+        .row-10 { grid-row-start: 10; }
+
+    </style>
+
 <!--     <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" media="all"/>
  -->
     <!-- Social Tags -->
@@ -273,6 +382,61 @@
 
     </div>
 <br><br>
+    <section class="age-chart">
+        <!-- headings -->
+        <div class="heading">
+            Vaccine
+        </div>
+        <div class="heading">
+            19-21 years
+        </div>
+        <div class="heading">
+            22-26 years
+        </div>
+        <div class="heading">
+            27-49 years
+        </div>
+        <div class="heading">
+            50-64 years
+        </div>
+        <div class="heading">
+            >= 65 years
+        </div>
+
+        <div class="vaccine vaccine--influenza">
+            Influenza
+        </div>
+
+        <div class="span span--influenza">
+            1 dose anually
+        </div>
+
+        <!-- <div class="vaccine vaccine--influenza-a">
+            Influenza Attenuated
+        </div>
+        <div class="span span--influenza-a">
+            1 dose anually
+        </div> -->
+
+        <div class="vaccine">Influenza Attenuated</div>
+        <div class="span span--influenza-a">
+            1 dose anually
+        </div>
+
+        <div class="vaccine row-4">TDAP</div>
+        <div class="span span-2-7">1 dose TDAP, then TD Booster every 10 years</div>
+
+        <div class="vaccine">MMR</div>
+        <div class="span span-2-6">1 or 2 doses depending upon indication</div>
+
+        <div class="vaccine row-6">Varicella</div>
+        <div class="span span-2-5">2 doses</div>
+
+        <div class="vaccine row-7">Zoster Recombinant</div>
+        <div class="span row-7 span-5-7">2 doses</div>
+
+    </section>
+
     <div class="row">
         <div class="col s8 push-s2">
             <br></br>

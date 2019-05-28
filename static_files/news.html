@@ -83,17 +83,14 @@
                 // for (i=0; i < data.articles.length; i++) {
                 for (i=0; i < 11; i++) {
                   if(data.articles[i].urlToImage) {
-                    var appendString = '<div class="col s12 m6 l4" style="max-weight:500px; max-height:auto">\
-                    <div class="card">\
+                    var appendString = '<div class="col s12 m6 l4">\
+                    <div class="card" style="height:550px;">\
                       <div class="card-image">\
-                        <img src="' + data.articles[i].urlToImage + '">\
+                        <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
                       </div>\
                       <div class="card-content">\
-                      <span class="card-title" style="font-weight:bold">' + data.articles[i].title + '</span>\
+                      <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
                         <p>' + data.articles[i].description + '</p>\
-                      </div>\
-                      <div class="card-action">\
-                        <a style="color:#26a69a;" href="' + data.articles[i].url + '">Link to News Article</a>\
                       </div>\
                       </div>\
                     </div>';
@@ -128,24 +125,20 @@
                 // for (i=0; i < data.articles.length; i++) {
                 for (i=0; i < 11; i++) {
                   if(data.articles[i].urlToImage) {
-
                     const searchNewsArticles = '<div class="col s12 m6 l4">\
-                     <div class="card">\
+                     <div class="card" style="height:550px;">\
                       <div class="card-image">\
-                        <img src="' + data.articles[i].urlToImage + '">\
+                        <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
                       </div>\
                       <div class="card-content">\
-                        <span class="card-title" style="font-weight:bold">' + data.articles[i].title + '</span>\
+                        <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
                         <p>' + data.articles[i].description + '</p>\
-                      </div>\
-                      <div class="card-action">\
-                        <a style="color:#26a69a;" href="' + data.articles[i].url + '">Link to News Article</a>\
                       </div>\
                     </div>\
                   </div>';
                     $("#news-body").append(searchNewsArticles);
                     //console.log(appendString);
-                    console.log(i)
+                    //console.log(i)
                   }
                 }
 
@@ -162,7 +155,7 @@
     <body>
         <nav>
             <div class="nav-wrapper" style="background-color:#26a69a">
-              <a href="index.html" class="brand-logo" style="padding-left:10px">Vacc Tracc</a>
+              <a href="index.html" class="brand-logo" style="padding-left:20px">Vacc Tracc</a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index.html">My Vaccines</a></li>
                         <li class="active"><a href="news.html">News Feed</a></li>

@@ -9,7 +9,8 @@
           "starting age": "birth", 
           "ending age": "18 months", 
           "number of doses": "3",
-          "status": "completed"
+          "status": "completed",
+          "range": "6"
         } 
     },
 
@@ -21,7 +22,8 @@
         "starting age": "2 months", 
         "ending age": "6 months", 
         "number of doses": "2",
-        "status": "completed"
+        "status": "completed",
+        "range" : "4"
 
       } 
     },
@@ -34,7 +36,8 @@
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "4",
-        "status": "completed"
+        "status": "completed",
+        "range" : "7"
       }
     },
 
@@ -46,7 +49,8 @@
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "4",
-        "status": "completed"
+        "status": "completed",
+        "range": "7"
 
       }
     },
@@ -59,7 +63,8 @@
         "starting age": "2 months", 
         "ending age": "15 months", 
         "number of doses": "3",
-        "status": "completed"
+        "status": "completed",
+        "range" : "6"
 
       }
     },
@@ -72,7 +77,8 @@
         "starting age": "2 months", 
         "ending age": "15 months", 
         "number of doses": "4",
-        "status": "completed"
+        "status": "completed",
+        "range": "4"
 
       }
     },
@@ -85,10 +91,12 @@
         "starting age": "2 months", 
         "ending age": "6 years", 
         "number of doses": "3",
-        "status": "completed"
+        "status": "completed",
+        "range": "7"
 
       }
     },
+
     "Varicella": {
       "info": {
         "name": "Varicella",
@@ -97,7 +105,8 @@
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",
-        "status": "pending"
+        "status": "pending",
+        "range": "7"
 
       }
     },  
@@ -110,7 +119,8 @@
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",
-        "status": "pending"
+        "status": "pending",
+        "range": "7"
       }
     },
 
@@ -122,9 +132,11 @@
         "starting age": "12 months", 
         "ending age": "6 years", 
         "number of doses": "2",
-        "status": "pending"
+        "status": "pending",
+        "range": "7"
 
       }
-    }      
+    } 
+
   }
 }

@@ -40,7 +40,7 @@
             margin: 0 auto 3rem;
 
             display: grid;
-            grid-template-columns: 2fr repeat(5, 1fr);
+            grid-template-columns: 2fr repeat(8, 1fr);
             grid-template-rows: repeat(17, 1fr);
             /* grid-gap: 0.5rem; */
 
@@ -168,6 +168,10 @@
         .row-11 { grid-row-start: 11; }
         .row-12 { grid-row-start: 12; }
         .row-13 { grid-row-start: 13; }
+        .row-14 { grid-row-start: 14; }
+        .row-15 { grid-row-start: 15; }
+        .row-16 { grid-row-start: 16; }
+        .row-17 { grid-row-start: 17; }
 
         .legend {
             width: 70vw;
@@ -340,7 +344,7 @@
                         + vaccineName +
                         '\');" >' + 'Move to Pending' + '</button>' + '</td></tr>'
                     );
-                }          
+                }
                 getVN(vaccineName);
             });
 
@@ -365,13 +369,13 @@
             snapshot.forEach((child) => {
                 const vaccineName = child.val().info['name'];
                 var name = '<div class="vaccine">' + vaccineName + '</div>';
-                var range = '<div class="span span-2-' + child.val().info['range'] 
-                + '">' + child.val().info['number of doses'] + ' doses' + '</div>'; 
+                var range = '<div class="span span-2-' + child.val().info['range']
+                + '">' + child.val().info['number of doses'] + ' doses' + '</div>';
 
                 $("#dataVis").append(name);
                 $("#dataVis").append(range);
 
-                var i = child.val().info['range']; 
+                var i = child.val().info['range'];
                 while(i < 7) {
                     console.log(vaccineName);
                     const emptyDiv = '<div style="border:none;"></div>';
@@ -517,6 +521,15 @@
         </div>
         <div class="heading">
             13-18 months
+        </div>
+        <div class="heading">
+            19-24 months
+        </div>
+        <div class="heading">
+            19-24 months
+        </div>
+        <div class="heading">
+            19-24 months
         </div>
         <div class="heading">
             19-24 months

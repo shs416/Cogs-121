@@ -10,7 +10,8 @@
           "ending age": "18 months", 
           "number of doses": "3",
           "status": "completed",
-          "range": "6"
+          "starting range": "2",
+          "ending range": "6"
         } 
     },
 
@@ -23,8 +24,8 @@
         "ending age": "6 months", 
         "number of doses": "2",
         "status": "completed",
-        "range" : "4"
-
+        "starting range": "2",
+        "ending range": "6"
       } 
     },
     
@@ -37,7 +38,8 @@
         "ending age": "6 years", 
         "number of doses": "4",
         "status": "completed",
-        "range" : "7"
+        "starting range": "2",
+        "ending range": "6"
       }
     },
 
@@ -50,12 +52,12 @@
         "ending age": "6 years", 
         "number of doses": "4",
         "status": "completed",
-        "range": "7"
-
+        "starting range": "2",
+        "ending range": "6"
       }
     },
     
-    "Haemophilys influenzae type b": {
+    "Haemophilus influenzae type b": {
       "info": {
         "name": "Haemophilys influenzae type b",  
         "description": "Hib can cause severe infections of both the tissue covering the brain and spinal cord (meningitis) and the bloodstream.",              
@@ -64,8 +66,8 @@
         "ending age": "15 months", 
         "number of doses": "3",
         "status": "completed",
-        "range" : "6"
-
+        "starting range": "2",
+        "ending range": "6"
       }
     },
 
@@ -78,8 +80,8 @@
         "ending age": "15 months", 
         "number of doses": "4",
         "status": "completed",
-        "range": "4"
-
+        "starting range": "2",
+        "ending range": "6"
       }
     },
       
@@ -92,8 +94,8 @@
         "ending age": "6 years", 
         "number of doses": "3",
         "status": "completed",
-        "range": "7"
-
+        "starting range": "2",
+        "ending range": "6"
       }
     },
 
@@ -106,8 +108,8 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "range": "7"
-
+        "starting range": "2",
+        "ending range": "6"
       }
     },  
   
@@ -120,7 +122,8 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "range": "7"
+        "starting range": "2",
+        "ending range": "6"
       }
     },
 
@@ -133,10 +136,23 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "range": "7"
-
+        "starting range": "2",
+        "ending range": "6"
       }
-    } 
+    }, 
 
+    "Meningococcal disease": {
+      "info": {
+        "name": "Meningococcal disease",
+        "description": "Meningococcal disease can refer to any illness caused by the type of bacteria called Neisseria meningitidis. These illnesses are often severe and can be deadly. They include infections of the lining of the brain and spinal cord (meningitis) and bloodstream infections.",
+        "transmitted": "The bacteria spread through the exchange of respiratory and throat secretions like spit (e.g., by living in close quarters, kissing).",
+        "starting age": "11 years",
+        "ending age": "16 years",
+        "number of doses": "2",
+        "status": "pending",
+        "starting range": "2",
+        "ending range": "6"
+      }
+    }
   }
 }

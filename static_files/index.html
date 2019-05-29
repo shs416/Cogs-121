@@ -218,7 +218,9 @@
         }
 
         .highlight-row {
-            color: #26a69a;
+            border: 10px solid blue;
+            border-color: #26a69a;
+            color: blue;
         }
 
     </style>
@@ -281,7 +283,16 @@
             $("#completed_vaccines tbody").empty();
             populatePending(false);
             populateCompleted(true);
+$(document).on("hover", '#completed_row_Diptheria', function() {
+    // This is what you want to achieve
+    // Calling this function when an event has been binded to $("#id")
+    console.log("bind click binded");
+    highlightRow("completed", vacName);
+});          
+            highlightRow("completed", vacName);
         }
+        
+
     }
 
    function moveToPending(buttonId, vacName) {
@@ -294,6 +305,7 @@
             $("#completed_vaccines tbody").empty();
             populatePending(true);
             populateCompleted(false);
+
         }
     }
 
@@ -307,15 +319,15 @@
                 if(child.val().info['status'] == 'pending') {
                     //console.log("pending", child.val().info['name']);
                     $('#pending_vaccines > tbody:last-child').append(
-                        '<tr id="pending-row-' + vaccineName
+                        '<tr id="pending_row_' + vaccineName
                         + '"><td><label><input type="checkbox" id="' +
                         vaccineName + '"' + 'onChange="moveToCompleted(\'' + vaccineName
                         + '\');" />' + '<span>'
                         + '</span></label></td>' +
-                        '<td>' + vaccineName + '</td>' +
-                        '<td>' + child.val().info['starting age'] + '</td>'
-                        + '<td>' + child.val().info['ending age'] + '</td>'
-                        + '<td>' + child.val().info['number of doses'] + '</td>'
+                        '<td style="font-weight:500;">' + vaccineName + '</td>' +
+                        '<td style="font-weight:500;">' + child.val().info['starting age'] + '</td>'
+                        + '<td style="font-weight:500;">' + child.val().info['ending age'] + '</td>'
+                        + '<td style="font-weight:500;">' + child.val().info['number of doses'] + '</td>'
                         + '</tr>'
 
                     );
@@ -336,12 +348,12 @@
                     //console.log("completed", child.val().info['name']);
 
                     $('#completed_vaccines > tbody:last-child').append(
-                        '<tr id="completed-row-' + vaccineName + '">' +
-                        '<td>' + vaccineName + '</td>' +
-                        '<td>' + child.val().info['starting age'] + '</td>'
-                        + '<td>' + child.val().info['ending age'] + '</td>'
-                        + '<td>' + child.val().info['number of doses'] + '</td>'
-                        + '<td><button class=btn id="' + backToPendingButton
+                        '<tr id="completed_row_' + vaccineName + '">' +
+                        '<td style="border-right: 1px solid; border-right-color: #80808052; font-weight:500;">' + vaccineName + '</td>'//+
+                       // '<td>' + child.val().info['starting age'] + '</td>'
+                       // + '<td>' + child.val().info['ending age'] + '</td>'
+                       // + '<td>' + child.val().info['number of doses'] + '</td>'
+                        + '<td style="text-align: center;" ><button class=btn id="' + backToPendingButton
                         + '"' + 'onClick="moveToPending(\'' + backToPendingButton
                         + '\', \''
                         + vaccineName +
@@ -359,9 +371,14 @@
     }
 
     function highlightRow(status, vaccineName) {
-        const rowName = status + "-row-" + vaccineName;
-        $('#' + rowName).toggleClass("highlight-row").fadeOut(400, function() {
+        const rowName = status + "_row_" + vaccineName;
+       //         console.log("rowName " + rowName);
+        const name = "heading";
+        var x = document.getElementById(rowName);
+        $("[id='rowName']").toggleClass("highlight-row").fadeOut(400, function() {
         $(this).toggleClass("highlight-row").fadeIn(0)
+        console.log(rowName);
+ 
         })
     }
 
@@ -459,7 +476,7 @@
 <body>
     <nav>
         <div class="nav-wrapper" id="indexNav" style="background-color:#26a69a;">
-          <a href="index.html" class="brand-logo" style="padding-left:10px">Vacc Tracc</a>
+          <a href="index.html" class="brand-logo" style="padding-left:10px; font-weight: 300;">Vacc Tracc</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="index.html">My Vaccines</a></li>
                     <li><a href="news.html">News Feed</a></li>
@@ -470,7 +487,7 @@
     <div class="row">
         <div class="col s12 m6 l6">
 
-            <h4 style="font-weight:bold;">Pending Vaccines</h4>
+            <h4 id="heading" style="font-weight:bold;">Pending Vaccines</h4>
             <table style="width:100%" id="pending_vaccines">
                 <thead>
                     <tr>
@@ -493,9 +510,9 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Starting age</th>
+<!--                         <th>Starting age</th>
                         <th>Ending age</th>
-                        <th>Number of doses</th>
+                        <th>Number of doses</th> -->
                         <th></th>
                     </tr>
                 </thead>

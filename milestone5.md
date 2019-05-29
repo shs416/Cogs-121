@@ -36,7 +36,6 @@ vaccine in the form of a timeline. This allows the users to see not only when to
 and end each vaccine, but also how the process is spread out over a certain time 
 period, given the total number of doses required for each vaccine.
 
-
 ![Milestone5 - Data Visualization](images/milestone-5/updated_data.png)
 
 ### Possible Future Data Visualization Implementation 

@@ -158,6 +158,28 @@
             grid-column-end: 7;
         }
 
+        .span-3-10 {
+            grid-column-start: 3;
+            grid-column-end: 10;
+        }
+
+        .span-3-6 {
+            grid-column-start: 3;
+            grid-column-end: 6;
+        }
+
+        .span-4-10 {
+            grid-column-start: 4;
+            grid-column-end: 10;
+        }
+
+        .span-4-8 {
+            grid-column-start: 4;
+            grid-column-end: 8;
+        }
+
+
+
         .row-1 { grid-row-start: 1; }
         .row-2 { grid-row-start: 2; }
         .row-3 { grid-row-start: 3; }
@@ -389,16 +411,18 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
             snapshot.forEach((child) => {
                 const vaccineName = child.val().info['name'];
                 var name = '<div class="vaccine">' + vaccineName + '</div>';
-                var range = '<div class="span span-2-' + child.val().info['range']
+                var range = '<div class="span span-' + child.val().info['starting range']+ '-' 
+                + child.val().info['ending range']
                 + '">' + child.val().info['number of doses'] + ' doses' + '</div>';
+                console.log(range);
 
                 $("#dataVis").append(name);
                 $("#dataVis").append(range);
 
-                var i = child.val().info['range'];
-                while(i < 7) {
+                var i = child.val().info['ending range'];
                     console.log(vaccineName);
                     const emptyDiv = '<div style="border:none;"></div>';
+                while(i < 10) {
                     $('#dataVis').append(emptyDiv);
                     i++;
                 }
@@ -531,28 +555,28 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
             Vaccine
         </div>
         <div class="heading">
-            Birth-2 months
+            Birth-1 mo
         </div>
         <div class="heading">
-            3-6 months
+            2-4 mos
         </div>
         <div class="heading">
-            7-12 months
+            5-12 mos
         </div>
         <div class="heading">
-            13-18 months
+            13-15 mos
         </div>
         <div class="heading">
-            19-24 months
+            16-18 mos
         </div>
         <div class="heading">
-            19-24 months
+            19-24 mos
         </div>
         <div class="heading">
-            19-24 months
+            2-3 yrs
         </div>
         <div class="heading">
-            19-24 months
+            4-6 yrs
         </div>
 
 
@@ -626,10 +650,10 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
 
     <article class="legend">
         <div class="color color--green"></div>
-        <div class="ref ref--green">Range of recommended ages for all children</div>
+        <div class="ref ref--green">Range of recommended ages of vaccination for all children</div>
 
-        <div class="color color--blue"></div>
-        <div class="ref ref--blue">Range of recommended ages for certain high-risk groups</div>
+<!--         <div class="color color--blue"></div>
+        <div class="ref ref--blue">Range of recommended ages for certain high-risk groups</div> -->
     </article>
 
     <div class="row">

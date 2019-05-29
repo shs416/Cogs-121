@@ -11,7 +11,7 @@
           "number of doses": "3",
           "status": "completed",
           "starting range": "2",
-          "ending range": "6"
+          "ending range": "7"
         } 
     },
 
@@ -24,7 +24,7 @@
         "ending age": "6 months", 
         "number of doses": "2",
         "status": "completed",
-        "starting range": "2",
+        "starting range": "3",
         "ending range": "6"
       } 
     },
@@ -36,10 +36,10 @@
         "transmitted": "Diphtheria is transmitted through respiratory droplets, like from coughing or sneezing.",
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "4",
+        "number of doses": "5",
         "status": "completed",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "3",
+        "ending range": "10"
       }
     },
 
@@ -50,10 +50,10 @@
         "transmitted": "Tetanus is not transmitted from person to person.",
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "4",
+        "number of doses": "1",
         "status": "completed",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "3",
+        "ending range": "10"
       }
     },
     
@@ -64,9 +64,9 @@
         "transmitted": "Hib is spread to others through respiratory droplets, e.g. when someone who has the bacteria in their nose or throat coughs or sneezes.",
         "starting age": "2 months", 
         "ending age": "15 months", 
-        "number of doses": "3",
+        "number of doses": "5",
         "status": "completed",
-        "starting range": "2",
+        "starting range": "3",
         "ending range": "6"
       }
     },
@@ -80,7 +80,7 @@
         "ending age": "15 months", 
         "number of doses": "4",
         "status": "completed",
-        "starting range": "2",
+        "starting range": "3",
         "ending range": "6"
       }
     },
@@ -92,10 +92,10 @@
         "transmitted": "It is spread mainly by person-to-person contact. It can also be spread by consuming food or drinks that are contaminated with the feces of an infected person.",
         "starting age": "2 months", 
         "ending age": "6 years", 
-        "number of doses": "3",
+        "number of doses": "4",
         "status": "completed",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "3",
+        "ending range": "10"
       }
     },
 
@@ -108,8 +108,8 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "4",
+        "ending range": "10"
       }
     },  
   
@@ -122,8 +122,8 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "4",
+        "ending range": "10"
       }
     },
 
@@ -136,8 +136,8 @@
         "ending age": "6 years", 
         "number of doses": "2",
         "status": "pending",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "4",
+        "ending range": "10"
       }
     }, 
 
@@ -146,12 +146,12 @@
         "name": "Meningococcal disease",
         "description": "Meningococcal disease can refer to any illness caused by the type of bacteria called Neisseria meningitidis. These illnesses are often severe and can be deadly. They include infections of the lining of the brain and spinal cord (meningitis) and bloodstream infections.",
         "transmitted": "The bacteria spread through the exchange of respiratory and throat secretions like spit (e.g., by living in close quarters, kissing).",
-        "starting age": "11 years",
-        "ending age": "16 years",
+        "starting age": "6 months",
+        "ending age": "2 years",
         "number of doses": "2",
         "status": "pending",
-        "starting range": "2",
-        "ending range": "6"
+        "starting range": "4",
+        "ending range": "8"
       }
     }
   }

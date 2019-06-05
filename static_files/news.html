@@ -38,6 +38,15 @@ of cards with article title, a few lines of the article, and an image.
 
         <!-- The page is populated by making a call to the News API and the keyword "vaccine." -->
         <script type="text/javascript">
+
+          // Make sure no broken link article images are used
+          function imageExists(url) 
+          {
+             var img = new Image();
+             img.src = url;
+             return img.height != 0;
+          }
+
           $(document).ready(() => {
             var url = 'https://newsapi.org/v2/everything?' +
                 'q=vaccine&' +
@@ -55,7 +64,7 @@ of cards with article title, a few lines of the article, and an image.
 
               // Article "cards" are created using the article title, article, and related image
               for (i=0; i < data.articles.length; i++) {
-                if(data.articles[i].urlToImage) {
+                if(data.articles[i].urlToImage && (imageExists(data.articles[i].urlToImage) == 1)) {
                   var appendString = '<div class="col s12 m6 l4">\
                   <div class="card" style="height:550px;">\
                     <div class="card-image">\
@@ -71,6 +80,7 @@ of cards with article title, a few lines of the article, and an image.
                }
               }
             });
+
 
             // The search bar works by taking in the text the user inputs to the bar and making a url request.
             $('#searchNews').click(() => {
@@ -91,7 +101,7 @@ of cards with article title, a few lines of the article, and an image.
 
               // Article "cards" are created using the article title, article, and related image
               for (i=0; i < data.articles.length; i++) {
-                if(data.articles[i].urlToImage) {
+                if(data.articles[i].urlToImage && (imageExists(data.articles[i].urlToImage) == 1)) {
                   const searchNewsArticles = '<div class="col s12 m6 l4">\
                    <div class="card" style="height:550px;">\
                     <div class="card-image">\

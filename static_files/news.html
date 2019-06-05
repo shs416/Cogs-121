@@ -41,11 +41,12 @@ of cards with article title, a few lines of the article, and an image.
           $(document).ready(() => {
             var url = 'https://newsapi.org/v2/everything?' +
                 'q=vaccine&' +
-                'from=2019-05-31&' +
+                'from=2019-05-19&' +
                 'sortBy=popularity&' +
                 'pageSize=60&'+
                 'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
 
+            // The url information is put together into one string and used to fetch news articles
             var req = new Request(url);
 
             fetch(req)
@@ -77,7 +78,7 @@ of cards with article title, a few lines of the article, and an image.
               const keyWord = $('#searchBar').val()
               const search_url = 'https://newsapi.org/v2/everything?' +
               'q=vaccine ' +keyWord +'&' +
-              'from=2019-05-31&' +
+              'from=2019-05-19&' +
               'sortBy=popularity&' +
               'pageSize=60&'+
               'apiKey=7867f4d606ad4067b3bbd060deac1cf3';

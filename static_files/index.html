@@ -1,3 +1,15 @@
+<!-- 
+Filename: index.html
+Description: This file implements functionality for the My Vaccines page of the web app.
+The file sets up two tables on the webpage, with Pending and Completed Vaccines, and 
+these tables are updated in real time as a user marks a vaccine as completed or still 
+pending. To populate and update tables, calls to the Firebase database are used. 
+Additionally, the user can view a list of all vaccines as well as search the database
+for some extra information such as diseases prevented by the vaccine and the symptoms.
+The file sets up a timeline on the webpage for the user to see what age ranges are 
+appropriate to get each vaccine administered.
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,29 +19,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicons -->
-
-    <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
-    <meta name="msapplication-square70x70logo" content="/assets/img/favicons/smalltile.png" />
-    <meta name="msapplication-square150x150logo" content="/assets/img/favicons/mediumtile.png" />
-    <meta name="msapplication-wide310x150logo" content="/assets/img/favicons/widetile.png" />
-    <meta name="msapplication-square310x310logo" content="/assets/img/favicons/largetile.png" />
-
-    <!-- Styles -->
-
+    <!-- Styles for data visualization -->
     <style type="text/css" media="screen">
 
         .age-chart {
@@ -46,9 +36,7 @@
 
             align-items: center;
             /* justify-content: center; */
-
         }
-
 
         .age-chart > * {
             /* padding: 10px; */
@@ -178,8 +166,6 @@
             grid-column-end: 8;
         }
 
-
-
         .row-1 { grid-row-start: 1; }
         .row-2 { grid-row-start: 2; }
         .row-3 { grid-row-start: 3; }
@@ -247,90 +233,69 @@
 
     </style>
 
-<!--     <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" media="all"/>
- -->
     <!-- Social Tags -->
 
     <meta name="description" content="" />
-
     <meta property="og:title" content="Home" />
     <meta property="og:description" content="" />
     <meta property="og:url" content="/"/>
     <meta property="og:site_name" content="Bare"/>
     <meta property="og:image" content=""/>
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="Bare">
-    <meta name="twitter:title" content="Home">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" type="text/html" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
+    <!-- Firebase key setup -->
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
+    // Initialize Firebase
+    var config = {
         apiKey: "AIzaSyD47cJGwFkIc9siMnsw0om2jxesLkfwtEY",
         authDomain: "cogs-121-vaccine-app.firebaseapp.com",
         databaseURL: "https://cogs-121-vaccine-app.firebaseio.com",
         projectId: "cogs-121-vaccine-app",
         storageBucket: "cogs-121-vaccine-app.appspot.com",
         messagingSenderId: "629787599584"
-      };
-      firebase.initializeApp(config);
+    };
+    firebase.initializeApp(config);
     </script>
-
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <script src="jquery-3.3.1.min.js"></script>
 
-
+    <!-- Functions for populating page -->
     <script type="text/javascript">
     const database = firebase.database();
 
-   function moveToCompleted(vacName) {
+    // After vaccine is marked as completed, change the status in the database and repopulate page
+    function moveToCompleted(vacName) {
         if(document.getElementById(vacName).checked) {
             // move items
             database.ref("vaccines/" + vacName + "/info/").update({status: "completed"});
-            //console.log(vacName + "updated");
 
             $("#pending_vaccines tbody").empty();
             $("#completed_vaccines tbody").empty();
             populatePending(false);
             populateCompleted(true);
-$(document).on("hover", '#completed_row_Diptheria', function() {
-    // This is what you want to achieve
-    // Calling this function when an event has been binded to $("#id")
-    console.log("bind click binded");
-    highlightRow("completed", vacName);
-});          
-            highlightRow("completed", vacName);
         }
-        
-
     }
 
-   function moveToPending(buttonId, vacName) {
+    // After vaccine is marked as pending, change the status in the database and repopulate page
+    function moveToPending(buttonId, vacName) {
         if(document.getElementById(buttonId)) {
             // move items
             database.ref("vaccines/" + vacName + "/info/").update({status: "pending"});
-            //console.log(vacName + "updated");
 
             $("#pending_vaccines tbody").empty();
             $("#completed_vaccines tbody").empty();
             populatePending(true);
             populateCompleted(false);
-
         }
     }
 
+    // Populate pending table by making call to database and retrieving the ones with pending status. Make table rows dynamically by appending html elements.
     function populatePending(highlightOn) {
         database.ref('vaccines/').once('value', (snapshot) => {
             const data = snapshot.val();
@@ -339,7 +304,6 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
                 const vaccineName = child.val().info['name'];
 
                 if(child.val().info['status'] == 'pending') {
-                    //console.log("pending", child.val().info['name']);
                     $('#pending_vaccines > tbody:last-child').append(
                         '<tr id="pending_row_' + vaccineName
                         + '"><td><label><input type="checkbox" id="' +
@@ -358,7 +322,7 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
         });
     }
 
-
+    // Populate completed table by making call to database and retrieving the ones with completed status. Make table rows dynamically by appending html elements.
     function populateCompleted(highlightOn) {
         database.ref('vaccines/').once('value', (snapshot) => {
             const data = snapshot.val();
@@ -367,14 +331,10 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
                 const vaccineName = child.val().info['name'];
                 const backToPendingButton = vaccineName + "_back_to_pending_button";
                 if(child.val().info['status'] == 'completed') {
-                    //console.log("completed", child.val().info['name']);
 
                     $('#completed_vaccines > tbody:last-child').append(
                         '<tr id="completed_row_' + vaccineName + '">' +
-                        '<td style="border-right: 1px solid; border-right-color: #80808052; font-weight:500;">' + vaccineName + '</td>'//+
-                       // '<td>' + child.val().info['starting age'] + '</td>'
-                       // + '<td>' + child.val().info['ending age'] + '</td>'
-                       // + '<td>' + child.val().info['number of doses'] + '</td>'
+                        '<td style="border-right: 1px solid; border-right-color: #80808052; font-weight:500;">' + vaccineName + '</td>'
                         + '<td style="text-align: center;" ><button class=btn id="' + backToPendingButton
                         + '"' + 'onClick="moveToPending(\'' + backToPendingButton
                         + '\', \''
@@ -382,30 +342,13 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
                         '\');" >' + 'Move to Pending' + '</button>' + '</td></tr>'
                     );
                 }
-                getVN(vaccineName);
             });
 
         });
     }
 
-    function getVN(vaccineName) {
-        return vaccineName;
-    }
-
-    function highlightRow(status, vaccineName) {
-        const rowName = status + "_row_" + vaccineName;
-       //         console.log("rowName " + rowName);
-        const name = "heading";
-        var x = document.getElementById(rowName);
-        $("[id='rowName']").toggleClass("highlight-row").fadeOut(400, function() {
-        $(this).toggleClass("highlight-row").fadeIn(0)
-        console.log(rowName);
- 
-        })
-    }
-
+    // Dynamically get age ranges for each vaccine to make timeline. Append html elements based on age range span.
     function dataVis() {
-
         database.ref('vaccines/').once('value', (snapshot) => {
             const data = snapshot.val();
             snapshot.forEach((child) => {
@@ -414,28 +357,21 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
                 var range = '<div class="span span-' + child.val().info['starting range']+ '-' 
                 + child.val().info['ending range']
                 + '">' + child.val().info['number of doses'] + ' doses' + '</div>';
-                console.log(range);
 
                 $("#dataVis").append(name);
                 $("#dataVis").append(range);
 
                 var i = child.val().info['ending range'];
-                    console.log(vaccineName);
-                    const emptyDiv = '<div style="border:none;"></div>';
+                const emptyDiv = '<div style="border:none;"></div>';
                 while(i < 10) {
                     $('#dataVis').append(emptyDiv);
                     i++;
                 }
-                //console.log("here");
-
             });
         });
     }
 
-    /*function capFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }*/
-
+    // Populate tables and set up buttons and search for vaccines.
     $(document).ready(() => {
 
         const database = firebase.database();
@@ -444,11 +380,8 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
         dataVis();
 
         $('#viewAllVaccineButton').click(() => {
-
             database.ref('vaccines/').once('value', (snapshot) => {
                 const data = snapshot.val();
-                console.log('Vaccine data: ', (data));
-
 
                 $('#vaccineDiv').html('All vaccines: ' + Object.keys(data));
             });
@@ -462,24 +395,20 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
         $('#infoButton').click(() => {
             const key = 'vaccines/' + $('#nameBox').val()//.toLowerCase();
             const vaccineName = $('#nameBox').val();
-            console.log('Vaccine data for ', key);
 
             database.ref(key).once('value', (snapshot) => {
                 const data = snapshot.val();
 
                 if(data) {
                     snapshot.forEach((child) => {
-                        console.log(child.val());
                         $('#vaccineInfoDiv').html('Info for ' + child.val()['name'] + '<br />'
                             + 'Description: ' + child.val()['description'] + '<br />'
                             + 'How it spreads: ' + child.val()['transmitted'] + '<br />'
                             + 'Starting age: ' + child.val()['starting age'] + '<br />'
                             + 'Ending age: ' + child.val()['ending age'] + '<br />'
                             + 'Number of doses: ' + child.val()['number of doses']
-
                         );
                     });
-                    //console.log('Vaccine data: ', (data));
                 }
                 else {
                     $('#vaccineInfoDiv').html('Vaccine not found!');
@@ -496,7 +425,6 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
     </script>
 </head>
 
-
 <body>
     <nav>
         <div class="nav-wrapper" id="indexNav" style="background-color:#26a69a;">
@@ -508,9 +436,9 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
         </div>
    </nav>
 
+   <!-- Pending table skeleton -->
     <div class="row">
         <div class="col s12 m6 l6">
-
             <h4 id="heading" style="font-weight:bold;">Pending Vaccines</h4>
             <table style="width:100%" id="pending_vaccines">
                 <thead>
@@ -528,6 +456,7 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
 
         </div>
 
+        <!-- Completed table skeleton -->
         <div class="col s12 m6 l6">
             <h4 style="font-weight:bold;">Completed Vaccines</h4>
             <table style="width:100%" id="completed_vaccines">
@@ -543,9 +472,9 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
                 <tbody></tbody>
             </table>
         </div>
-
     </div>
 
+    <!-- Timeline skeleton -->
     <br><br>
     <center><h4 style="font-weight:bold;">Immunization Schedule</h4></center>
     <section id="dataVis" class="age-chart">
@@ -578,72 +507,6 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
         <div class="heading">
             4-6 yrs
         </div>
-
-
-<!--         <div class="vaccine vaccine--influenza vaccine--or">
-            Influenza
-        </div>
-
-        <div class="span span--influenza">
-            1 dose anually
-        </div>
- -->
-        <!-- <div class="vaccine vaccine--influenza-a">
-            Influenza Attenuated
-        </div>
-        <div class="span span--influenza-a">
-            1 dose anually
-        </div> -->
-<!--         <div class="vaccine">Influenza Attenuated</div>
-        <div class="span span--influenza-a">
-            1 dose anually
-        </div>
-
-        <div class="vaccine row-4">TDAP</div>
-        <div class="span span-2-7">1 dose TDAP, then TD Booster every 10 years</div>
-
-        <div class="vaccine">MMR</div>
-        <div class="span span-2-6">1 or 2 doses depending upon indication</div>
-
-        <div class="vaccine row-6">Varicella</div>
-        <div class="span span-2-5">2 doses</div>
-
-        <div class="vaccine vaccine--or row-7">Zoster Recombinant</div>
-        <div class="span row-7 span-5-7">2 doses</div>
-
-        <div class="vaccine row-8">Zoster Live</div>
-        <div class="span row-8 span-6-7">1 doses</div>
-
-        <div class="vaccine row-9">HPV Female</div>
-        <div class="span row-9 span-2-4">2 or 3 doses depending on age at initial vaccination</div>
-
-        <div class="vaccine row-10">HPV Male</div>
-        <div class="span row-10 span-2-3"></div>
-        <div class="span span--a row-10 span-3-4"></div>
-        <div class=" row-10 span-2-4">2 or 3 doses depending on age at initial vaccination</div>
-
-        <div class="vaccine row-11">PCV13</div>
-        <div class="span row-11 span-2-6">1 dose</div>
-        <div class="span span--a row-11 span-6-7">1 dose</div>
-
-        <div class="vaccine row-12">PPSV23</div>
-        <div class="span row-12 span-2-6">1 or 2 doses depending on indication</div>
-        <div class="span span--a row-12 span-6-7">1 dose</div>
-
-        <div class="vaccine row-13">Hepatitis A</div>
-        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine</div>
-
-        <div class="vaccine row-14">Hepatitis B</div>
-        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine</div>
-
-        <div class="vaccine row-15">Meningococcal A, C, W, Y</div>
-        <div class="span span--a span-2-7">1 or 2 doses depending on indication, then booster every 5 yrs if risk remains</div>
-
-        <div class="vaccine row-16">Meningococcal B</div>
-        <div class="span span--a span-2-7">2 or 3 doses depending on vaccine and indication</div>
-
-        <div class="vaccine row-17">Haemophilus influenzae type b</div>
-        <div class="span span--a span-2-7">1 or 3 doses depending on indication</div> -->
     </section>
 
     <center><h5>Legend</h3></center>
@@ -651,31 +514,26 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
     <article class="legend">
         <div class="color color--green"></div>
         <div class="ref ref--green">Range of recommended ages of vaccination for all children</div>
-
-<!--         <div class="color color--blue"></div>
-        <div class="ref ref--blue">Range of recommended ages for certain high-risk groups</div> -->
     </article>
 
+    <!-- View All Vaccines skeleton, Look Up Vaccines skeleton -->
     <div class="row">
         <div class="col s8 push-s2">
             <br></br>
-        <center>
-            <h4>Learn More About Vaccines</h4><br></br>
-            <button class="btn" id="viewAllVaccineButton">
-                <i class="material-icons left">visibility</i>
-                View All Vaccines
-            </button>
-            <button class="btn" id="hideAllVaccineButton">
-                <i class="material-icons left">visibility_off</i>
-                Hide All Vaccines
-            </button>
-            <br><br>
-            <div id="vaccineDiv"></div>
-        </center>
-    </div>
-
-
-
+            <center>
+                <h4 style="font-weight:bold;">Learn More About Vaccines</h4><br></br>
+                <button class="btn" id="viewAllVaccineButton">
+                    <i class="material-icons left">visibility</i>
+                    View All Vaccines
+                </button>
+                <button class="btn" id="hideAllVaccineButton">
+                    <i class="material-icons left">visibility_off</i>
+                    Hide All Vaccines
+                </button>
+                <br><br>
+                <div id="vaccineDiv"></div>
+            </center>
+        </div>
     </div>
 
     <div class="row">
@@ -687,28 +545,14 @@ $(document).on("hover", '#completed_row_Diptheria', function() {
             <center>
                 <button class="btn" id="infoButton">Get info</button>
             </center>
-                <br><br>
-                <div id="vaccineInfoDiv"></div>
-
-
-            <!-- <i class="material-icons prefix left">search</i>
-            <input id = "searchBar" type="text" placeholder="Search..">
-            <center>
-                <button id="searchNews" class="btn waves-light">Search</button>
-            </center> -->
+            <br><br>
+            <div id="vaccineInfoDiv"></div>
         </div>
     </div>
-
-
+    
     <footer class="">
-<small>
+    </footer>
 
-</small>
-</footer>
-
-    <!-- Google Analytics -->
-
-<!--    <script src="http://localhost:35729/livereload.js"></script> -->
 
 </body>
 </html>

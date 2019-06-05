@@ -1,4 +1,7 @@
-{
+// { Json file for vaccine information. Each vaccine contains information on age ranges it is given, 
+  // the diseases it prevents, the number of doses, how the disease is prevented. The json file is 
+  // imported into Firebase.
+
   "vaccines": 
   {
     "Hepatitis B": {

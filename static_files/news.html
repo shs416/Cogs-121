@@ -1,3 +1,12 @@
+<!-- 
+Filename: news.html
+Description: This file implements the functionality for searching up news articles.
+The page calls the NEWS API. The page of news articles is initally populated with 
+articles related to the keyword "vaccine." The user can then make a search and it 
+will be appended with the keyword "vaccine." The results are returned in the form 
+of cards with article title, a few lines of the article, and an image.
+-->
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,33 +16,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Favicons -->
-
-        <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16">
-        <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
-        <meta name="msapplication-square70x70logo" content="/assets/img/favicons/smalltile.png" />
-        <meta name="msapplication-square150x150logo" content="/assets/img/favicons/mediumtile.png" />
-        <meta name="msapplication-wide310x150logo" content="/assets/img/favicons/widetile.png" />
-        <meta name="msapplication-square310x310logo" content="/assets/img/favicons/largetile.png" />
-
-        <!-- Styles -->
-
-        <!-- <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" media="all"/> -->
-
         <!-- Social Tags -->
-
         <meta name="description" content="" />
 
         <meta property="og:title" content="Home" />
@@ -42,32 +25,23 @@
         <meta property="og:site_name" content="Bare"/>
         <meta property="og:image" content=""/>
 
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="Bare">
-        <meta name="twitter:title" content="Home">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
-
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Internal Styles -->
-
-        <style media="screen" type="text/css">
-            
-        </style>
+        <style media="screen" type="text/css"></style>
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
         <script src="jquery-3.3.1.min.js"></script>
 
+        <!-- The page is populated by making a call to the News API and the keyword "vaccine." -->
         <script type="text/javascript">
           $(document).ready(() => {
             var url = 'https://newsapi.org/v2/everything?' +
                 'q=vaccine&' +
-                'from=2019-05-05&' +
+                'from=2019-05-31&' +
                 'sortBy=popularity&' +
                 'pageSize=60&'+
                 'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
@@ -78,83 +52,67 @@
               .then(function(response) { return response.json(); })
               .then(function(data) {
 
-                //var jsonData = response.json();
-                console.log(data);
-
-                // for (i=0; i < data.articles.length; i++) {
-                for (i=0; i < data.articles.length; i++) {
-                  if(data.articles[i].urlToImage) {
-                    var appendString = '<div class="col s12 m6 l4">\
-                    <div class="card" style="height:550px;">\
-                      <div class="card-image">\
-                        <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
-                      </div>\
-                      <div class="card-content">\
-                      <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
-                        <p>' + data.articles[i].description + '</p>\
-                      </div>\
-                      </div>\
-                    </div>';
-                    $("#news-body").append(appendString);
-                    //console.log(appendString);
-                 }
-                }
+              // Article "cards" are created using the article title, article, and related image
+              for (i=0; i < data.articles.length; i++) {
+                if(data.articles[i].urlToImage) {
+                  var appendString = '<div class="col s12 m6 l4">\
+                  <div class="card" style="height:550px;">\
+                    <div class="card-image">\
+                      <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
+                    </div>\
+                    <div class="card-content">\
+                    <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
+                      <p>' + data.articles[i].description + '</p>\
+                    </div>\
+                    </div>\
+                  </div>';
+                  $("#news-body").append(appendString);
+               }
+              }
             });
 
-              $('#searchNews').click(() => {
-                $("#news-body").empty();
-                console.log('search')
-                const keyWord = $('#searchBar').val()
-                console.log(keyWord)
-                const search_url = 'https://newsapi.org/v2/everything?' +
-                'q=vaccine ' +keyWord +'&' +
-                'from=2019-05-05&' +
-                'sortBy=popularity&' +
-                'pageSize=60&'+
-                'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
+            // The search bar works by taking in the text the user inputs to the bar and making a url request.
+            $('#searchNews').click(() => {
+              $("#news-body").empty();
+              const keyWord = $('#searchBar').val()
+              const search_url = 'https://newsapi.org/v2/everything?' +
+              'q=vaccine ' +keyWord +'&' +
+              'from=2019-05-31&' +
+              'sortBy=popularity&' +
+              'pageSize=60&'+
+              'apiKey=7867f4d606ad4067b3bbd060deac1cf3';
 
-                console.log(search_url);
-
-                 const search_req = new Request(search_url);
+               const search_req = new Request(search_url);
 
             fetch(search_req)
               .then(function(response) { return response.json(); })
               .then(function(data) {
 
-                //var jsonData = response.json();
-                console.log(data);
-
-                // for (i=0; i < data.articles.length; i++) {
-                for (i=0; i < data.articles.length; i++) {
-                  if(data.articles[i].urlToImage) {
-                    const searchNewsArticles = '<div class="col s12 m6 l4">\
-                     <div class="card" style="height:550px;">\
-                      <div class="card-image">\
-                        <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
-                      </div>\
-                      <div class="card-content">\
-                        <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
-                        <p>' + data.articles[i].description + '</p>\
-                      </div>\
+              // Article "cards" are created using the article title, article, and related image
+              for (i=0; i < data.articles.length; i++) {
+                if(data.articles[i].urlToImage) {
+                  const searchNewsArticles = '<div class="col s12 m6 l4">\
+                   <div class="card" style="height:550px;">\
+                    <div class="card-image">\
+                      <img src="' + data.articles[i].urlToImage + '" style="height:200px">\
                     </div>\
-                  </div>';
-                    $("#news-body").append(searchNewsArticles);
-                    //console.log(appendString);
-                    //console.log(i)
-                  }
+                    <div class="card-content">\
+                      <span class="card-title" style="font-weight:bold"><a href="' + data.articles[i].url + '" style="color:black;">' + data.articles[i].title + '</a></span>\
+                      <p>' + data.articles[i].description + '</p>\
+                    </div>\
+                  </div>\
+                </div>';
+                  $("#news-body").append(searchNewsArticles);
                 }
-
-              })
-             });
-
-
-            });
-          </script>
-
-
+              }
+            })
+           });
+        });
+        </script>
     </head>
 
     <body>
+        <!-- Nav bar set up -->
         <nav>
             <div class="nav-wrapper" style="background-color:#26a69a">
               <a href="index.html" class="brand-logo" style="padding-left:20px; font-weight: 300;">Vacc Tracc</a>
@@ -163,8 +121,9 @@
                         <li class="active"><a href="news.html">News Feed</a></li>
                   </ul>
             </div>
-       </nav>
+        </nav>
 
+      <!-- Search bar skeleton -->
        <div class="row">
            <div class="input-field col s8 push-s2">
                <i class="material-icons prefix left">search</i>
@@ -175,41 +134,10 @@
            </div>
        </div>
 
+       <div class="row" id="news-body"></div>
 
-       <div class="row" id="news-body">
-
-
-          <!-- Example Card
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="images/sample.jpeg">
-                 <span class="card-title">News Title</span>
-               </div>
-               <div class="card-content">
-                 <p>news intro text news intro text news intro text news intro text news intro text.</p>
-               </div>
-               <div class="card-action">
-                 <a href="#">Link to News Article</a>
-               </div>
-             </div>
-           </div> !-->
-        </div>
-
-        <footer class="">
-    <small>
-
-    </small>
+<footer class="">
 </footer>
 
-        <!-- Google Analytics -->
-
-<!--         <script src="//localhost:35729/livereload.js"></script>
- -->
-
-
-    </body>
-
-
-
+</body>
 </html>

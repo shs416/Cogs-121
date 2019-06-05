@@ -6,8 +6,9 @@ Jen-Jun Yen: Ideation, Protoype, Adding functions into the News page,
 			 
 Shiva Sharma: Setting up backend with Firebase, implementing dynamic population of vaccine records and timeline with Firebase data, making json file using CDC data, UI design, milestone writeups.
 
-Dylan Hua: Storyboard, News API, Demo Video
+Dylan Hua: Storyboard, using News API to populate news page, Demo Video
 
+Prabhav Khandelwal: Set up front end and timeline skeleton, storyboarding, writeups
 
 ## Source Code File:
 - index.html: This file implements functionality for the My Vaccines page of the web app.

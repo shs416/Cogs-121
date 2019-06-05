@@ -8,7 +8,7 @@ Shiva Sharma: Setting up backend with Firebase, implementing dynamic population 
 
 Dylan Hua: Storyboard, using News API to populate news page, Demo Video
 
-Prabhav Khandelwal: Set up front end and timeline skeleton, storyboarding, writeups
+Prabhav Khandelwal: Set up front end CSS framework, HTML/CSS, timeline skeleton, ideation, storyboarding, and writeups
 
 ## Source Code File:
 - index.html: This file implements functionality for the My Vaccines page of the web app.

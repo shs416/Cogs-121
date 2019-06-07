@@ -32,7 +32,7 @@ of cards with article title, a few lines of the article, and an image.
 
 ## Slide
 
-https://docs.google.com/presentation/d/11qukbaqWn4rEAMHUP0CHcmtws3HwaBJtjvIv0_sJr50/edit?fbclid=IwAR35DdTygZRpt2OI8V8CWZ41__ChjtIPy8NMXDqV8E3sXBK8aA0AG46v-hg#slide=id.p
+https://docs.google.com/presentation/d/11qukbaqWn4rEAMHUP0CHcmtws3HwaBJtjvIv0_sJr50/edit?usp=sharing
 
 ## Demo 
 
